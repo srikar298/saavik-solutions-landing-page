@@ -90,16 +90,16 @@ export default function Hero() {
       {/* HERO SECTION */}
       <div className="relative w-full min-h-screen bg-cover bg-center overflow-hidden flex flex-col">
         {/* Background Image - Using Next.js Image for responsiveness */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={heroBgLg}
-            alt="Hero Background"
-            fill
-            priority
-            className="object-cover"
-          />
-        </div>
+ <video
+    className="absolute inset-0 w-full h-full object-cover z-0"
+    src="/Saavik_hero.mp4"
+    autoPlay
+    loop
+    muted
+    playsInline
+  />
 
+  {/* <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/80 to-black/70 z-10" /> */}
         {/* NAVBAR */}
         <Navbar />
 
