@@ -2,11 +2,19 @@
 
 import type React from "react"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from "next"
+import { AxeProvider } from "@/components/axe-provider"
 
 const inter = Inter({ subsets: ["latin"] })
+
+import type { Viewport } from 'next'
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+}
 
 export const metadata: Metadata = {
   title: "Saavik Solutions | Premier IT Services & Software Development",
@@ -89,7 +97,6 @@ export const metadata: Metadata = {
     yandex: "yandex-verification-code",
   },
 }
-
 export default function RootLayout({
   children,
 }: {
@@ -97,39 +104,40 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
-      <head>
-        <meta name="theme-color" content="#000000" />
-        <link rel="canonical" href="https://saaviksolutions.com" />
+      <body className={`${inter.className} overflow-x-hidden`}>
+        <AxeProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </AxeProvider>
         {/* Google Analytics 4 (GA4) Tracking Code */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9592N0DQT"></script>
-        <script>
-          {
-            `window.dataLayer = window.dataLayer || [];
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-K9592N0DQT"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-K9592N0DQT');`
-          }
-        </script>
+            gtag('config', 'G-K9592N0DQT');
+          `}
+        </Script>
         {/* Microsoft Clarity Tracking Code */}
-        <script type="text/javascript">
-          {
-            `(function(c,l,a,r,i,t,y){` +
-            `c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};` +
-            `t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;` +
-            `y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);` +
-            `})(window, document, "clarity", "script", "sn458hp0e8");`
-          }
-        </script>
-      </head>
-      <body className={`${inter.className} overflow-x-hidden`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "sn458hp0e8");
+          `}
+        </Script>
       </body>
     </html>
   );

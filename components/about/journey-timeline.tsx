@@ -1,5 +1,6 @@
 'use client'
 import { motion } from "framer-motion"
+import Image from 'next/image';
 
 const timelineEvents = [
   {
@@ -74,22 +75,13 @@ export default function JourneyTimeline() {
                 <div className="z-10 pl-8 sm:flex-1 sm:pl-8">
                   <h3 className="text-lg font-bold text-gray-900 md:text-xl">{event.title}</h3>
                   <p className="mb-4 text-sm text-gray-600 md:text-base">{event.description}</p>
-                  <div className="overflow-hidden rounded-lg md:rounded-xl">
-                    <picture>
-                      <source
-                        media="(min-width: 1024px)"
-                        srcSet={event.images.large}
-                      />
-                      <source
-                        media="(min-width: 768px)"
-                        srcSet={event.images.medium}
-                      />
-                      <img
-                        src={event.images.small}
-                        alt={event.title}
-                        className="h-40 w-full object-cover md:h-48 lg:h-56"
-                      />
-                    </picture>
+                  <div className="relative overflow-hidden rounded-lg md:rounded-xl h-40 w-full md:h-48 lg:h-56">
+                    <Image
+                      src={event.images.large}
+                      alt={event.title}
+                      fill={true}
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -100,4 +92,3 @@ export default function JourneyTimeline() {
     </section>
   )
 }
-
