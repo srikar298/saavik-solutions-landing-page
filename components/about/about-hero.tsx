@@ -1,5 +1,6 @@
 'use client'
 import { motion } from "framer-motion"
+import Image from 'next/image';
 
 export default function AboutHero() {
   return (
@@ -78,23 +79,14 @@ export default function AboutHero() {
               {/* Rocket Launch Image */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="overflow-hidden rounded-2xl h-[400px]"
+                className="relative overflow-hidden rounded-2xl h-[400px]"
               >
-                <picture>
-                  <source
-                    media="(min-width: 1024px)"
-                    srcSet="https://placehold.co/800x400"
-                  />
-                  <source
-                    media="(min-width: 768px)"
-                    srcSet="https://placehold.co/600x300"
-                  />
-                  <img
-                    src="https://placehold.co/400x200"
-                    alt="Rocket launch"
-                    className="h-full w-full object-cover"
-                  />
-                </picture>
+                <Image
+                  src="https://placehold.co/800x400"
+                  alt="Rocket launch"
+                  fill={true}
+                  className="object-cover"
+                />
               </motion.div>
 
               {/* Code/Text Image */}
@@ -102,21 +94,12 @@ export default function AboutHero() {
                 whileHover={{ scale: 1.02 }}
                 className="overflow-hidden rounded-2xl h-[300px] relative"
               >
-                <picture>
-                  <source
-                    media="(min-width: 1024px)"
-                    srcSet="https://placehold.co/800x300"
-                  />
-                  <source
-                    media="(min-width: 768px)"
-                    srcSet="https://placehold.co/600x225"
-                  />
-                  <img
-                    src="https://placehold.co/400x150"
-                    alt="Blurred code"
-                    className="h-full w-full object-cover brightness-50"
-                  />
-                </picture>
+                <Image
+                  src="https://placehold.co/800x300"
+                  alt="Blurred code"
+                  fill={true}
+                  className="object-cover brightness-50"
+                />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h3 className="text-2xl font-bold text-white">Innovation Through Technology</h3>
                 </div>

@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "lucide-react";
@@ -86,10 +87,11 @@ export default function BlogSection() {
               className="group overflow-hidden rounded-3xl bg-gray-900/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:bg-gray-900/70"
             >
               <div className="relative h-64 w-full overflow-hidden">
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  fill={true}
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute left-4 top-4 rounded-full bg-gradient-to-r from-[#6A43E7] via-[#7F38E8] to-[#E879F9] px-4 py-1 text-xs font-semibold uppercase text-white shadow-lg">
                   {post.category}

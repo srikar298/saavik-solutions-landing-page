@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function MissionVision() {
   return (
     <section className="w-full bg-white py-16 md:py-20">
@@ -27,20 +29,22 @@ export default function MissionVision() {
           {/* Second Column */}
           <div className="flex flex-col gap-6">
             {/* Rocket Launch Image */}
-            <div className="overflow-hidden rounded-lg shadow-md h-[330px] md:h-[360px] lg:h-[330px]">
-              <img
+            <div className="relative overflow-hidden rounded-lg shadow-md h-[330px] md:h-[360px] lg:h-[330px]">
+              <Image
                 src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="Rocket launch"
-                className="h-full w-full object-cover"
+                fill={true}
+                className="object-cover"
               />
             </div>
 
             {/* Code/Text Image - restored to original height */}
-            <div className="overflow-hidden rounded-lg shadow-md h-[220px] md:h-[240px] lg:h-[220px]">
-              <img
+            <div className="relative overflow-hidden rounded-lg shadow-md h-[220px] md:h-[240px] lg:h-[220px]">
+              <Image
                 src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="Blurred code"
-                className="h-full w-full object-cover brightness-50"
+                fill={true}
+                className="object-cover brightness-50"
               />
             </div>
           </div>
@@ -49,4 +53,3 @@ export default function MissionVision() {
     </section>
   )
 }
-
